@@ -56,3 +56,22 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+==================================================
+
+Part1: Signin & Signup (including middleware and guards)
+
+1. Sign up. Go to the project【how-to-laravel】and check the default registerController and the customized registerController. Then write your own regesterController
+for Clients.
+
+2. In your customized registerController, overwrite the functions: showRegistrationForm(), create(array $data), validator(array $data)
+   and set your Clients Model at the same time. As we are going to implementing the defaut Laravel Auth, so we have to let our
+   model to extend the Authenticatable. And do not forget to set the new guard for your new model Clients
+   Coming next, we will build our customized loginController, meanwhile to set our customized middleware steps by steps. 
+   (As the loginController is still empty now, if you have already signed in, it will go to guard->login, that is the reason why you will redirect to 
+    home rather than anyother path as it is implementing the default setting path.) 
+	
+20180518
+
+==================================================
