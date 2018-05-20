@@ -9,7 +9,7 @@
 
                 <p class="text-center text-warning">Create anything crazy~~~</p>
                 <a href="{{ url('/clients/registration') }}" ><button type="button" class="btn btn-info">Registration</button></a>
-                <button href="#" type="button" class="btn btn-info">Login</button>
+                <a href="{{ url('/clients/login') }}" ><button  type="button" class="btn btn-info">Login</button>
             </div>
         </div>
 @stop

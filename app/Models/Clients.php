@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 //use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class Clients extends Authenticatable
 {
     //use Notifiable;
-    protected $table = 'clients';
+    protected $table = 'clients'; // 5.5 ver, you do not have to add _
     
     /**
      * The attributes that are mass assignable.

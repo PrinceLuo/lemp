@@ -75,3 +75,34 @@ for Clients.
 20180518
 
 ==================================================
+
+Part1(cont.): Signin & Signup (including middleware and guards)
+
+Before this practice, please note that PUT method would stay in the current url,
+as I go to the route 'clients/logout', it will redirect to '/'. But it showed
+'127.0.0.1/clients/logout'. Pay attention if you implement PUT and DELETE, as
+it it not suggested to use PUT or DELETE in a request form.
+
+LoginController is created. Copy and rewrite functions needed. Belows are some 
+points that worth attentions:
+1. add 【use Illuminate\Foundation\Auth\AuthenticatesUsers;】if you want to 
+【use AuthenticatesUsers;】, the Auth from Laravel
+2. add 【use Illuminate\Support\Facades\Auth;】if you want to implement the
+default style of the function guard(); also create a new guard for your own
+customized guard
+3. add 【$this->middleware('guest:clients')->except('logout');】 in the 
+constructor
+4. set the variable 【protected $redirectTo = '/clients/dashboard';】; the same
+as RegisterController
+5. the function username()
+6. validation. When implementing the pipeline in the regex, you have to change
+the sring into array of the validation value. Check again in the moble_number
+validation
+7. in the \app\Http\Middleware\RedirectIfAuthenticated.php,
+add a switch to handle the guard 【clients】, as we are not using the default
+【users】, otherwise it will always run the program as the default setting after
+login
+
+20180520
+
+==================================================

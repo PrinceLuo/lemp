@@ -26,6 +26,8 @@ Route::get('/', function(){
 Route::prefix('clients')->namespace('Clients')->group(function($route){
     $route->get('registration','RegisterController@showRegistrationForm');
     $route->post('registration','RegisterController@register')->name('clients.registration');
-    $route->get('login','RegisterController@showLoginForm');
-    $route->post('login','AuthController@login')->name('clients.login');
+    $route->get('login','LoginController@showLoginForm');
+    $route->post('login','LoginController@login')->name('clients.login');
+    $route->post('logout','LoginController@logout')->name('clients.logout');
+    $route->get('dashboard','TaskController@index')->name('clients.dashboard');
 });
