@@ -60,8 +60,17 @@ class Handler extends ExceptionHandler {
     protected function unauthenticated($request, AuthenticationException $exception) {
         // Go to project【how-to-laravel】and check the way to handle multi users
 //        dd(url()->current());
-        session()->put('url.intended', url()->current());
-        return $request->expectsJson() ? response()->json(['message' => 'Unauthenticated.'], 401) : redirect('clients/login');
+        session()->put('url.intended', url()->current()); // you may modify this if differences exist for different roles
+        // considering multi roles
+        $guard = array_get($exception->guards(), 0);
+        switch($guard){
+            case 'clients':
+                return $request->expectsJson() ? response()->json(['message' => 'Unauthenticated.'], 401) : redirect('clients/login');
+                break;
+            default:
+                return $request->expectsJson() ? response()->json(['message' => 'Unauthenticated.'], 401) : redirect('/');
+        }
+        
     }
 
 }

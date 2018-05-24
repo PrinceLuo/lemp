@@ -107,7 +107,7 @@ login
 
 ==================================================
 
-Part1(cont.): Signin & Signup (including unauthenticated)
+Part1(cont.): Unauthenticated
 
 1. add 【session()->put('url.intended', url()->current());】 in function unauthenticated()
   in Exception/Handler.php to keep the current intended url into the session 【url.intended】;
