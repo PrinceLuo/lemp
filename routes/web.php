@@ -30,4 +30,5 @@ Route::prefix('clients')->namespace('Clients')->group(function($route){
     $route->post('login','LoginController@login')->name('clients.login');
     $route->post('logout','LoginController@logout')->name('clients.logout');
     $route->get('dashboard','TaskController@index')->name('clients.dashboard');
+    $route->get('auth_test','TaskController@authenticatedPage')->name('clients.auth_test');
 });

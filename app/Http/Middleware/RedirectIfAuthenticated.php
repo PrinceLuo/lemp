@@ -26,12 +26,12 @@ class RedirectIfAuthenticated {
         switch ($guard) {
             case 'clients':
                 if (Auth::guard($guard)->check()) {
-                    return redirect('/clients/dashboard');
+                    return redirect(route('clients.dashboard'));
                 }
                 break;
             default:
                 if (Auth::guard($guard)->check()) {
-                    return redirect('/clients/dashboard');
+                    return redirect()->intended();
                 }
                 break;
         }

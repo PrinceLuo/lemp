@@ -65,6 +65,7 @@ class LoginController extends Controller
      */
     public function showLoginForm()
     {
+//        session()->put('url.intended', url()->previous());
         return view('clients.pages.login');
     }
     
@@ -142,6 +143,7 @@ class LoginController extends Controller
 
         return $this->authenticated($request, $this->guard()->user())
                 ?: redirect()->intended($this->redirectPath());
+//        return $this->authenticated($request, $this->guard()->user());
     }
     */
 }

@@ -27,4 +27,8 @@ class TaskController extends Controller
     public function index(){
         return view('clients.pages.dashboard');
     }
+    
+    public function authenticatedPage(){
+        return view('clients.pages.authenticated');
+    }
 }

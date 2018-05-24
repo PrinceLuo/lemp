@@ -106,3 +106,15 @@ login
 20180520
 
 ==================================================
+
+Part1(cont.): Signin & Signup (including unauthenticated)
+
+1. add 【session()->put('url.intended', url()->current());】 in function unauthenticated()
+  in Exception/Handler.php to keep the current intended url into the session 【url.intended】;
+  after this, 
+  P.S.: redirect()->intended('backup_url') will read the session()->get('url.intended')
+  if session()->has('url.intended') fails, it will redirect to the 'backup_url' instead.
+
+20180524
+
+==================================================
