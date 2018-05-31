@@ -107,7 +107,7 @@ login
 
 ==================================================
 
-Part1(cont.): Unauthenticated
+Part2: Unauthenticated & intended page after authenticated
 
 1. add 【session()->put('url.intended', url()->current());】 in function unauthenticated()
   in Exception/Handler.php to keep the current intended url into the session 【url.intended】;
@@ -116,5 +116,38 @@ Part1(cont.): Unauthenticated
   if session()->has('url.intended') fails, it will redirect to the 'backup_url' instead.
 
 20180524
+
+==================================================
+
+Part3: Staff
+
+1. Add a staff login & register. The difference is, register is auth with boss,
+   you need to pass the authentication with role of boss, then you can use the 
+   registration functions. (add roles filter in exception/Handler.php and
+   middleware/RedirectIfAuthenticated.php and config/auth.php)
+
+==================================================
+
+Part4: Customize Administration Dashboard with free permissions authorization
+
+In this case, the boss, who has the top permission over the whole users of the 
+Administration Dashboard:
+1. Create a kind of role for the whole corporation. While the boss create a new
+   role, he or she has to assign some columns and operations for this role, 
+   authorizing this role permissions to access certain columns and certain 
+   operations.
+2. Register a staff of this corporation. While the boss register a new staff,
+   he or she has to assign a existing role for him or her.
+
+3. To bind various properties of permissions, several data tables named 【role_xxx】
+   are established. Then, to enable a role to demonstrate permissions, also 
+   to enable one kind of permission to demonstrate roles that own it, we use
+   the many-to-many relationships in eloquent. To digger deeper, we have to design 
+   a better structure to serve the free permission authorization. E.g.: 
+   Middleware, Middleware Group, Eloquent relationships and tables relationships.
+
+Never stand still!!!
+
+20180531
 
 ==================================================

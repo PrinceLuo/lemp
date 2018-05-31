@@ -2,6 +2,14 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/luoru/hidden/xampp7/htdocs/lemp/routes/web.php</file>
+            <file>file:/C:/Users/luoru/hidden/xampp7/htdocs/lemp/app/Models/Roles.php</file>
+            <file>file:/C:/Users/luoru/hidden/xampp7/htdocs/lemp/resources/views/admin_dashboard/pages/roleForm.blade.php</file>
+            <file>file:/C:/Users/luoru/hidden/xampp7/htdocs/lemp/app/Http/Controllers/Staff/TaskController.php</file>
+            <file>file:/C:/Users/luoru/hidden/xampp7/htdocs/lemp/resources/views/admin_dashboard/pages/dashboard.blade.php</file>
+            <file>file:/C:/Users/luoru/hidden/xampp7/htdocs/lemp/app/Models/Staff.php</file>
+            <file>file:/C:/Users/luoru/hidden/xampp7/htdocs/lemp/resources/views/admin_dashboard/pages/login.blade.php</file>
+        </group>
     </open-files>
 </project-private>

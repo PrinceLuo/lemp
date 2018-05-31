@@ -29,6 +29,11 @@ class RedirectIfAuthenticated {
                     return redirect(route('clients.dashboard'));
                 }
                 break;
+            case 'staff':
+                if (Auth::guard($guard)->check()) {
+                    return redirect(route('staff.dashboard'));
+                }
+                break;
             default:
                 if (Auth::guard($guard)->check()) {
                     return redirect()->intended();

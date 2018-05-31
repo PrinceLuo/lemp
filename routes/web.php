@@ -32,3 +32,18 @@ Route::prefix('clients')->namespace('Clients')->group(function($route){
     $route->get('dashboard','TaskController@index')->name('clients.dashboard');
     $route->get('auth_test','TaskController@authenticatedPage')->name('clients.auth_test');
 });
+
+Route::prefix('staff')->namespace('Staff')->group(function($route){
+    $route->get('registration','RegisterController@showRegistrationForm');
+    $route->post('registration','RegisterController@register')->name('staff.registration');
+    $route->get('login','LoginController@showLoginForm');
+    $route->post('login','LoginController@login')->name('staff.login');
+    $route->post('logout','LoginController@logout')->name('staff.logout');
+    $route->get('dashboard','TaskController@index')->name('staff.dashboard');
+    $route->get('createrole','TaskController@newRoleForm');
+    $route->post('createrole','TaskController@createRole')->name('staff.createRole');
+    $route->get('column1','TaskController@getColumn1')->name('staff.getColumn1');
+    $route->get('column2','TaskController@getColumn2')->name('staff.getColumn2');
+//    $route->get('getcolumns','TaskController@getColumns')->name('staff.getColumns');
+//    $route->get('getoperations','TaskController@getoperations')->name('staff.getOperations');
+});

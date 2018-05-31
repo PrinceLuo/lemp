@@ -67,6 +67,9 @@ class Handler extends ExceptionHandler {
             case 'clients':
                 return $request->expectsJson() ? response()->json(['message' => 'Unauthenticated.'], 401) : redirect('clients/login');
                 break;
+            case 'staff':
+                return $request->expectsJson() ? response()->json(['message' => 'Unauthenticated.'], 401) : redirect('staff/login');
+                break;
             default:
                 return $request->expectsJson() ? response()->json(['message' => 'Unauthenticated.'], 401) : redirect('/');
         }
