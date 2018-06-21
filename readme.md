@@ -151,3 +151,8 @@ Never stand still!!!
 20180531
 
 ==================================================
+
+Extra:
+I add a new line here to test whether the git works or not on GitHub...
+
+20180621
