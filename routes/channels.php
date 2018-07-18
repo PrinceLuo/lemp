@@ -14,3 +14,8 @@
 Broadcast::channel('App.User.{id}', function ($user, $id) {
     return (int) $user->id === (int) $id;
 });
+
+// You have to REMOVE the $user and $id here, as we don't have these two
+Broadcast::channel('testChannel', function () {
+    return TRUE;
+});

@@ -156,3 +156,48 @@ Extra:
 I add a new line here to test whether the git works or not on GitHub...
 
 20180621
+
+==================================================
+
+Part5: WebSocket implementation
+
+1. composer require pusher/pusher-php-server "~3.0" (under Laravel 5.5)
+
+2. Go to 【https://pusher.com】 sign in with your Google or Github account, create
+   a new app, get the ID, KEY, SECRET and CLUSTER into your 【.env】 file
+
+3. Change the BROADCAST_DRIVER from the default 【log】 to 【pusher】
+
+4. We need to make an Event as the object for the Pusher to broadcast. Please to
+   go the Part5 cont. part (the comming next part) and learn how to build Laravel Event. 
+
+5. uncomment one line: 【App\Providers\BroadcastServiceProvider::class】 in config/app.php 
+
+6. npm install --save laravel-echo pusher-js
+
+7. uncomment the Echo part in resources\assets\js\boostrap.js
+
+Something wrong with this tools. Considering of switching to Ratchet
+
+8. I change to implement a javascript support by Pusher official instead of the Vue js
+
+==================================================
+
+Part5 (cont.) Laravel Event
+
+The Laravel Event is somehow a more powerful separated task (or function) that
+would be widely implemented and heavily relied by the Laravel Broadcasting and
+Notification
+
+php artisan event:generate
+
+build a route to test the event and the event listener
+
+==================================================
+
+Part5 (cont.) Ratchet Library
+
+Alternatively, we could implement the Ratchet Library to run WebSocket
+
+1. composer require cboden/ratchet
+(Later I will post the full steps)

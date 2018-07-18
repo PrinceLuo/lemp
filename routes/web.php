@@ -1,5 +1,6 @@
 <?php
 
+use App\Events\Event;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,6 +24,15 @@ Route::get('/', function () {
 Route::get('/', function(){
     return view('clients.pages.home');
 });
+
+Route::get('test_event',function(){
+    event(new Event('Greetings from PrinceLuo! Time:'.\Carbon\Carbon::now()));
+});
+
+Route::get('test_listen',function(){
+    return view('listenBroadcast');
+});
+
 Route::prefix('clients')->namespace('Clients')->group(function($route){
     $route->get('registration','RegisterController@showRegistrationForm');
     $route->post('registration','RegisterController@register')->name('clients.registration');
