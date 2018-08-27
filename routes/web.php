@@ -41,6 +41,10 @@ Route::prefix('clients')->namespace('Clients')->group(function($route){
     $route->post('logout','LoginController@logout')->name('clients.logout');
     $route->get('dashboard','TaskController@index')->name('clients.dashboard');
     $route->get('auth_test','TaskController@authenticatedPage')->name('clients.auth_test');
+    $route->get('download_page','TestFunctionsController@zipDownloadPage')->name('clients.zip_download_page');
+    $route->post('download_zipfile','TestFunctionsController@donwloadPDF')->name('clients.zip_download');
+    $route->post('simple_download_zipfile','TestFunctionsController@simpleDownloadZip')->name('clients.simple_zip_download');
+    $route->get('rank_array','TestFunctionsController@rankArray')->name('clients.rankArray');
 });
 
 Route::prefix('staff')->namespace('Staff')->group(function($route){
