@@ -81,7 +81,7 @@ Part1(cont.): Signin & Signup (including middleware and guards)
 Before this practice, please note that PUT method would stay in the current url,
 as I go to the route 'clients/logout', it will redirect to '/'. But it showed
 '127.0.0.1/clients/logout'. Pay attention if you implement PUT and DELETE, as
-it it not suggested to use PUT or DELETE in a request form.
+it is not suggested to use PUT or DELETE in a request form.
 
 LoginController is created. Copy and rewrite functions needed. Belows are some 
 points that worth attentions:
@@ -201,3 +201,22 @@ Alternatively, we could implement the Ratchet Library to run WebSocket
 
 1. composer require cboden/ratchet
 (Later I will post the full steps)
+
+2. create the command, for running the websocket server
+   【php artisan make:command WebSocketServer --command=websocket:init】
+   After create this command, we need to modify the new command to run 
+   as we want it to. (You will see "/app/Console/Commands/WebSocketServer.php" 
+   created)
+
+   Add "Commands\WebSocketServer::class" inside the array 【$commands】 of the 
+   【/app/Console/Kernel.php】
+
+   Then we need to create a controller to overwrite the main 4 functions:
+   onOpen, onMessage, onClose.
+   Modify them at your own will. (You do not have to create this controller, you 
+   can just place this Chat.php or so-call MyApp.php in a right place, as it does
+   not act like a normal controller in a Http request under a formal MVC structure.
+   A model is recommanded as it is similar to a class in Laravel structure.)
+
+   *We modify the 【server-chat】(which is put into the handle of the WebSocketServer),
+   adding a enableKeepAlive function

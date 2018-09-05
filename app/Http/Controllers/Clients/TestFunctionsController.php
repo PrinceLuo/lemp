@@ -58,7 +58,7 @@ class TestFunctionsController extends Controller {
 
     public function rankArray() {
 
-        $values = [-27,5, 12, 19, 9, 5,-27];
+        $values = [-27, 5, 12, 19, 9, 5, -27];
 
         $ordered_values = array_unique($values);
         rsort($ordered_values);
@@ -76,6 +76,36 @@ class TestFunctionsController extends Controller {
             $arr_res["$ind"] = $value;
         }
         print_r($arr_res);
+    }
+
+    public function webSocketClient(Request $request) {
+        if($request->filled('msg')){
+            $msgToSend = $request->msg;
+        }else{
+            $msgToSend = "This is a message sent from the Client!";
+        }
+        $loop = \React\EventLoop\Factory::create();
+        $reactConnector = new \React\Socket\Connector($loop, [
+            'dns' => '202.96.128.166',
+            'timeout' => 10
+        ]);
+        $connector = new \Ratchet\Client\Connector($loop, $reactConnector);
+        $connector('ws://localhost:8090', [], ['Origin' => 'http://localhost'])
+                ->then(function(\Ratchet\Client\WebSocket $conn) use ($msgToSend) {
+                    $conn->on('message', function(\Ratchet\RFC6455\Messaging\MessageInterface $msg) use ($conn) {
+                        echo "Received: {$msg}\n";
+                        $conn->close();
+                    });
+                    $conn->on('close', function($code = null, $reason = null) {
+                        echo "Connection closed ({$code} - {$reason})\n";
+                    });
+                    $conn->send($msgToSend);
+                }, function(\Exception $e) use ($loop) {
+                    echo "Connection fail: {$e->getMessage()}\n";
+                    $loop->stop();
+                });
+        $loop->run();
+        echo "Connection ends!";
     }
 
 }

@@ -45,6 +45,7 @@ Route::prefix('clients')->namespace('Clients')->group(function($route){
     $route->post('download_zipfile','TestFunctionsController@donwloadPDF')->name('clients.zip_download');
     $route->post('simple_download_zipfile','TestFunctionsController@simpleDownloadZip')->name('clients.simple_zip_download');
     $route->get('rank_array','TestFunctionsController@rankArray')->name('clients.rankArray');
+    $route->get('websocket_test','TestFunctionsController@webSocketClient')->name('clients.websocket_test');
 });
 
 Route::prefix('staff')->namespace('Staff')->group(function($route){
