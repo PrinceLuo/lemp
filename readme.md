@@ -220,3 +220,29 @@ Alternatively, we could implement the Ratchet Library to run WebSocket
 
    *We modify the 【server-chat】(which is put into the handle of the WebSocketServer),
    adding a enableKeepAlive function
+
+==================================================
+
+ JSON Web Token(JWT)
+
+【https://jwt-auth.readthedocs.io/en/develop/】Go to have a look at the Guidance
+
+1. composer require tymon/jwt-auth
+    then go to composer and change the version you need (in this case it is 1.0.0-rc.2)
+2. Run command 【php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceProvider"】
+3. Run command 【php artisan jwt:secret】
+4. Create the MobileUser class
+5. Build JWT Auth functions 
+
+so far, to make the whole JWT switch to your customized model instead of the default
+User Model, you have to :
+Modified config/jwt.php with my custom model:
+'user' => App\Models\Driver::class,
+Added this line before the JWTAuth::attempt attempt in my controller:
+config()->set( 'auth.defaults.guard', 'api' );
+and don't forget the provider in config\auth.php
+
+There are three ways to pass the token in the 【me】 interface
+1. in the head, Authorization<------>Bearer {{The token}} (need to set the content type and accept to json)
+2. add a parameter called token in the url. Like: ?token={{The token}}
+3. in the body, add token, set its value to the {{token}}

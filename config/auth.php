@@ -52,8 +52,8 @@ return [
         ],
 
         'api' => [
-            'driver' => 'token',
-            'provider' => 'users',
+            'driver' => 'jwt',
+            'provider' => 'mobile_users',
         ],
     ],
 
@@ -86,6 +86,10 @@ return [
         'staff' => [
             'driver' => 'eloquent',
             'model' => App\Models\Staff::class,
+        ],
+        'mobile_users' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\MobileUsers::class,
         ],
 
         // 'users' => [

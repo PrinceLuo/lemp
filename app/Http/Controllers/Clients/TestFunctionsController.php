@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Clients;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Chumper\Zipper\Zipper;
+use Illuminate\Support\Facades\Validator;
 
 class TestFunctionsController extends Controller {
 
@@ -108,4 +109,28 @@ class TestFunctionsController extends Controller {
         echo "Connection ends!";
     }
 
+    public function testUnique(Request $request){
+        // $input = [];
+        $test_db = new \App\Models\Test_table();
+        if($request->filled('date')){
+            $messages = [
+                'date.unique'=>'该月份已生成！',
+                'date.max'=>'请按“YYYY-mm”格式输入！'
+                ];
+            $validator = Validator::make($request->all(),[
+                'date'=>'unique:test_table|max:7'
+            ],$messages);
+            if($validator->fails()){
+                return redirect()->back()->withErrors($validator);
+            }
+            $test_db->date = $request->date;
+        }else{
+            $test_db->date = date('Y-m');
+        }
+        if($test_db->save()){
+            echo 'success!';
+        }else{
+            echo 'fail';
+        }
+    }
 }
